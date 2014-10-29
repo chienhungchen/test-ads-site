@@ -11,6 +11,50 @@
 	</head>
 	<body>
 		<h1>hello</h1>
-		<div id="ads-div"></div>
+		<div id="ads-div" data-adtarget></div>
+
+		<script>
+			(function(root, undefined){
+				'use strict';
+
+				console.log('Ads Code Snippet');
+				
+				//TODO rename this to something else
+				var AdsServer = {
+					//Define vars in here
+				};
+				
+				AdsServer.run = function() {
+					console.log('adserver run');
+					if(!($ = window.jQuery)) {
+						AdsServer.init(); //Double check to see if $ is available
+					}
+					else { //Do everything else
+						console.log('else');
+					}
+				};
+
+				AdsServer.init = function(){
+					console.log('adserver init');
+
+					if (!($ = window.jQuery)) { // typeof jQuery=='undefined' works too  
+						script = document.createElement('script');  
+						script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';   
+					    script.onload = AdsServer.run;  
+					    document.body.appendChild(script);
+					}   
+					else {
+					    AdsServer.run();
+					}
+				};
+
+				//Expose it to global
+				root.AdsServer1234 = AdsServer;
+
+				//Self-init
+				AdsServer.init();
+
+			})(this);
+		</script>
 	</body>
 </html>
