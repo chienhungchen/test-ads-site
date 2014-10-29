@@ -30,7 +30,11 @@
 						AdsServer.init(); //Double check to see if $ is available
 					}
 					else { //Do everything else
-						console.log('else');
+						console.log($('*[data-adtarget]'));
+						$('*[data-adtarget]').each(function(){
+							var $this = $(this);
+							$this.append('<img src="//placehold.it/100x100" />');
+						});
 					}
 				};
 
