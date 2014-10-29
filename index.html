@@ -37,7 +37,7 @@
 				AdsServer.init = function(){
 					console.log('adserver init');
 
-					if (!($ = window.jQuery)) { // typeof jQuery=='undefined' works too  
+					if (typeof jQuery=='undefined') {
 						script = document.createElement('script');  
 						script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';   
 					    script.onload = AdsServer.run;  
