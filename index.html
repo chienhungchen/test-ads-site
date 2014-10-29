@@ -2,16 +2,30 @@
 <html>
 	<head>
 		<style>
-			#ads-div {
+			#adsserve-a1b2c3-1 {
 				width: 100px;
 				height: 100px;
 				background: red;
 			}
+			
+			#adsserve-a1b2c3-2 {
+				width: 400px;
+				height: 100px;
+				background: #333;
+			}
+
+			#adsserve-a1b2c3-3 {
+				width: 100px;
+				height: 300px;
+				background: blue;
+			}
 		</style>
 	</head>
 	<body>
-		<h1>hello</h1>
-		<div id="ads-div" data-adtarget></div>
+		<h1>Hello World</h1>
+		<div id="adsserve-a1b2c3-1"></div>
+		<div id="adsserve-a1b2c3-2"></div>
+		<div id="adsserve-a1b2c3-3"></div>
 
 		<script>
 			(function(root, undefined){
@@ -31,11 +45,10 @@
 					}
 					else { //Do everything else
 						$.getJSON('http://www.shouldiquitcollege.com/data.php?callback=?',function(res){
+						    for(var i = 0; i < res.ads.length; i++) {
+						    	$('#' + res.ads[i].id).append('<img src="' + res.ads[i].src + '" />');
+						    }
 						    console.log(res);
-						});
-						$('*[data-adtarget]').each(function(){
-							var $this = $(this);
-							$this.append('<img src="//placehold.it/100x100" />');
 						});
 					}
 				};
